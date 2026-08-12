@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#1B3B6F">
+<title>Napoli Pocket Brief — Rowan Family 2026</title>
+<meta name="description" content="Offline pocket safety, intel & unofficial tour guide — Naples, Capri, Pompeii & Amalfi, Aug 2026.">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ===== TILE PATTERN DEFS (reused everywhere, zero external images) ===== -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <pattern id="majolica" width="40" height="40" patternUnits="userSpaceOnUse">
+      <rect width="40" height="40" fill="#F5EFE0"/>
+      <circle cx="20" cy="20" r="14" fill="none" stroke="#1B3B6F" stroke-width="1.5"/>
+      <circle cx="20" cy="20" r="7" fill="#C1502E"/>
+      <circle cx="20" cy="20" r="2.5" fill="#E8A33D"/>
+    </pattern>
+  </defs>
+</svg>
+
+<div id="offline-pill" class="offline-pill" aria-live="polite">● checking connection…</div>
+
+<header class="app-header">
+  <div class="header-eyebrow">ROWAN FIELD REFERENCE — UNOFFICIAL</div>
+  <h1>Napoli<span class="accent">.</span> Pocket Brief</h1>
+  <p class="header-sub">Naples · Capri · Pompeii · Amalfi — Aug 14–20, 2026</p>
+</header>
+
+<nav class="tab-strip" id="tab-strip" aria-label="Sections">
+  <button class="tab active" data-target="home">Home</button>
+  <button class="tab" data-target="itinerary">Itinerary</button>
+  <button class="tab" data-target="safety">Safety</button>
+  <button class="tab" data-target="sos">SOS</button>
+  <button class="tab" data-target="transport">Transport</button>
+  <button class="tab" data-target="gems">Hidden Gems</button>
+  <button class="tab" data-target="phrases">Phrases</button>
+  <button class="tab" data-target="signal">Wifi/SIM</button>
+</nav>
+
+<main id="app">
+
+  <!-- ================= HOME ================= -->
+  <section id="home" class="panel active">
+    <div class="hero-band">
+      <p class="hero-line">"Your biggest enemy in Italy is a teenager with fast hands on a crowded bus."</p>
+    </div>
+
+    <div class="alert-card urgent">
+      <div class="alert-tag">BOOK TODAY</div>
+      <ul>
+        <li>Amalfi private boat charter (Aug 19) — €800–1,500, tight August availability</li>
+        <li>Capri hydrofoil, both directions (Aug 16) — early sailing sells out</li>
+      </ul>
+    </div>
+
+    <div class="grid-nav">
+      <button class="nav-card" data-target="itinerary"><span class="nav-ic">🗓️</span>Itinerary</button>
+      <button class="nav-card" data-target="safety"><span class="nav-ic">🕵️</span>Safety &amp; Scams</button>
+      <button class="nav-card" data-target="sos"><span class="nav-ic">🆘</span>Emergency / SOS</button>
+      <button class="nav-card" data-target="transport"><span class="nav-ic">🚕</span>Transport</button>
+      <button class="nav-card" data-target="gems"><span class="nav-ic">🍋</span>Hidden Gems</button>
+      <button class="nav-card" data-target="phrases"><span class="nav-ic">🗣️</span>Phrases</button>
+      <button class="nav-card" data-target="signal"><span class="nav-ic">📶</span>Wifi / SIM</button>
+    </div>
+
+    <div class="info-strip">
+      <div class="info-chip"><strong>Forecast</strong>87–93°F all week, ~0% rain</div>
+      <div class="info-chip"><strong>Emergency</strong>112 (works no-SIM)</div>
+      <div class="info-chip"><strong>This app</strong>works with zero signal</div>
+    </div>
+
+    <p class="fine-print">Built from public sources, current as of Aug 2026. Not affiliated with any government or tour operator. When in doubt, trust a human over this app — but the app doesn't need bars to work, and your phone might not have any.</p>
+  </section>
+
+  <!-- ================= ITINERARY ================= -->
+  <section id="itinerary" class="panel">
+    <h2>The Week</h2>
+    <p class="section-sub">One big thing a day. Tap a day to open it.</p>
+    <div class="accordion" id="itin-list"></div>
+  </section>
+
+  <!-- ================= SAFETY ================= -->
+  <section id="safety" class="panel">
+    <h2>Safety &amp; Scams</h2>
+    <p class="section-sub">The honest version: violent crime against tourists is rare. The Camorra could not care less about your wallet. Your actual risk is petty, boring, and 100% preventable.</p>
+
+    <div class="voice-toggle" role="group" aria-label="Narrator voice">
+      <button class="voice-btn active" data-voice="tio">🧓 Tío Mode</button>
+      <button class="voice-btn" data-voice="millennial">📱 Millennial Mode</button>
+      <button class="voice-btn" data-voice="gringo">🦅 Gringo Mode</button>
+    </div>
+
+    <div id="scam-list" class="card-list"></div>
+  </section>
+
+  <!-- ================= SOS / EMERGENCY ================= -->
+  <section id="sos" class="panel">
+    <h2>Emergency Contacts</h2>
+    <p class="section-sub">Tap any number to call, any address to open in Maps (if you have signal — saved as text either way).</p>
+    <div id="sos-list" class="card-list"></div>
+  </section>
+
+  <!-- ================= TRANSPORT ================= -->
+  <section id="transport" class="panel">
+    <h2>Transport Cheat Sheet</h2>
+    <div id="transport-list" class="card-list"></div>
+  </section>
+
+  <!-- ================= HIDDEN GEMS ================= -->
+  <section id="gems" class="panel">
+    <h2>Hidden Gems</h2>
+    <p class="section-sub">Off the main loop. Coordinates included so these work even if "Open in Maps" doesn't load.</p>
+    <div id="gems-list" class="card-list"></div>
+  </section>
+
+  <!-- ================= PHRASES ================= -->
+  <section id="phrases" class="panel">
+    <h2>Pocket Phrases</h2>
+    <div id="phrase-list" class="card-list"></div>
+  </section>
+
+  <!-- ================= SIGNAL / CONNECTIVITY ================= -->
+  <section id="signal" class="panel">
+    <h2>Wifi &amp; Cell in Italy — Reality Check</h2>
+    <div id="signal-list" class="card-list"></div>
+  </section>
+
+</main>
+
+<footer class="app-footer">
+  <p>Made for the Rowan family trip · Works offline once installed · No account, no tracking, no signal required</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
