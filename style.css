@@ -1,0 +1,234 @@
+/* ===========================================================
+   NAPOLI POCKET BRIEF — design tokens
+   Palette drawn from Neapolitan majolica tile (Santa Chiara
+   cloister): cobalt, terracotta, sun-yellow, whitewash, volcanic black.
+   Display face: Fraunces (warm, Italian editorial serif)
+   Body face: Work Sans (clean, legible at small sizes on a phone)
+=========================================================== */
+
+:root{
+  --cream:#F5EFE0;
+  --cobalt:#1B3B6F;
+  --cobalt-deep:#122A4F;
+  --terracotta:#C1502E;
+  --sun:#E8A33D;
+  --volcanic:#1A1714;
+  --sea:#2F6F5E;
+  --line: rgba(26,23,20,0.12);
+  --shadow: 0 2px 10px rgba(26,23,20,0.08);
+  --radius: 14px;
+  --font-display: 'Fraunces', Georgia, serif;
+  --font-body: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--cream);
+  color:var(--volcanic);
+  font-family:var(--font-body);
+  -webkit-font-smoothing:antialiased;
+  padding-bottom:64px;
+}
+
+/* ---------- offline status pill ---------- */
+.offline-pill{
+  position:fixed; top:8px; right:8px; z-index:50;
+  font-size:11px; font-weight:600; letter-spacing:.02em;
+  padding:5px 10px; border-radius:999px;
+  background:var(--volcanic); color:var(--cream);
+  box-shadow:var(--shadow);
+  transition:background .2s;
+}
+.offline-pill.online{background:var(--sea)}
+.offline-pill.offline{background:var(--terracotta)}
+
+/* ---------- header ---------- */
+.app-header{
+  background:var(--cobalt);
+  background-image:
+    radial-gradient(circle at 85% -10%, rgba(232,163,61,0.35), transparent 55%),
+    radial-gradient(circle at -5% 110%, rgba(193,80,46,0.35), transparent 55%);
+  color:var(--cream);
+  padding:28px 20px 22px;
+  border-bottom:6px solid var(--terracotta);
+}
+.header-eyebrow{
+  font-size:11px; letter-spacing:.14em; font-weight:600;
+  color:var(--sun); text-transform:uppercase; margin-bottom:6px;
+}
+.app-header h1{
+  font-family:var(--font-display);
+  font-weight:700; font-size:34px; margin:0; line-height:1.05;
+}
+.app-header h1 .accent{color:var(--terracotta)}
+.header-sub{margin:6px 0 0; font-size:14px; opacity:.85}
+
+/* ---------- tab strip ---------- */
+.tab-strip{
+  display:flex; gap:6px; overflow-x:auto;
+  padding:10px 14px; background:var(--cream);
+  border-bottom:1px solid var(--line);
+  position:sticky; top:0; z-index:40;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.tab-strip::-webkit-scrollbar{display:none}
+.tab{
+  flex:0 0 auto;
+  font-family:var(--font-body); font-weight:600; font-size:13.5px;
+  color:var(--cobalt); background:transparent;
+  border:1.5px solid var(--line); border-radius:999px;
+  padding:8px 14px; white-space:nowrap; cursor:pointer;
+}
+.tab.active{background:var(--cobalt); color:var(--cream); border-color:var(--cobalt)}
+
+/* ---------- panels ---------- */
+main{max-width:640px; margin:0 auto; padding:18px 16px 30px}
+.panel{display:none; animation:fade .25s ease}
+.panel.active{display:block}
+@keyframes fade{from{opacity:0; transform:translateY(4px)} to{opacity:1; transform:none}}
+
+h2{
+  font-family:var(--font-display); font-size:24px; font-weight:700;
+  margin:4px 0 4px;
+}
+.section-sub{font-size:14px; color:#4a463f; margin:0 0 16px; line-height:1.5}
+
+/* ---------- home ---------- */
+.hero-band{
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='40' height='40'%3E%3Crect width='40' height='40' fill='%231B3B6F'/%3E%3Ccircle cx='20' cy='20' r='14' fill='none' stroke='%23F5EFE0' stroke-opacity='0.25' stroke-width='1.5'/%3E%3Ccircle cx='20' cy='20' r='6' fill='%23E8A33D' fill-opacity='0.5'/%3E%3C/svg%3E");
+  border-radius:var(--radius);
+  padding:22px 18px;
+  margin:14px 0;
+}
+.hero-line{
+  font-family:var(--font-display); font-style:italic; font-weight:600;
+  color:var(--cream); font-size:17px; line-height:1.4; margin:0;
+}
+
+.alert-card{
+  border-radius:var(--radius); padding:14px 16px; margin:14px 0;
+  box-shadow:var(--shadow);
+}
+.alert-card.urgent{background:#fff; border:2px solid var(--terracotta)}
+.alert-tag{
+  display:inline-block; background:var(--terracotta); color:#fff;
+  font-size:11px; font-weight:700; letter-spacing:.08em;
+  padding:3px 9px; border-radius:5px; margin-bottom:8px;
+}
+.alert-card ul{margin:0; padding-left:18px; font-size:14.5px; line-height:1.6}
+
+.grid-nav{
+  display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin:16px 0;
+}
+.nav-card{
+  display:flex; flex-direction:column; align-items:flex-start; gap:6px;
+  background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+  padding:14px 12px; font-family:var(--font-body); font-weight:600; font-size:14px;
+  color:var(--volcanic); cursor:pointer; text-align:left; box-shadow:var(--shadow);
+}
+.nav-ic{font-size:22px}
+
+.info-strip{display:flex; flex-direction:column; gap:8px; margin:16px 0}
+.info-chip{
+  background:var(--sea); color:#fff; border-radius:10px;
+  padding:10px 14px; font-size:13.5px;
+}
+.info-chip strong{display:block; font-size:11px; letter-spacing:.08em; text-transform:uppercase; opacity:.85; margin-bottom:2px}
+
+.fine-print{font-size:12px; color:#6b665c; line-height:1.5; margin-top:18px}
+
+/* ---------- accordion (itinerary) ---------- */
+.accordion-item{
+  background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+  margin-bottom:10px; overflow:hidden; box-shadow:var(--shadow);
+}
+.accordion-head{
+  width:100%; display:flex; justify-content:space-between; align-items:center;
+  gap:10px; background:none; border:none; padding:14px 16px; cursor:pointer;
+  text-align:left; font-family:var(--font-body);
+}
+.accordion-head .day-num{
+  font-family:var(--font-display); font-weight:700; color:var(--terracotta); font-size:20px; margin-right:8px;
+}
+.accordion-head .day-meta{flex:1}
+.accordion-head .day-date{font-size:11.5px; color:#6b665c; letter-spacing:.03em; text-transform:uppercase}
+.accordion-head .day-focus{font-weight:700; font-size:15.5px}
+.accordion-head .chev{transition:transform .2s; color:var(--cobalt); font-size:14px}
+.accordion-item.open .chev{transform:rotate(180deg)}
+.accordion-body{max-height:0; overflow:hidden; transition:max-height .25s ease}
+.accordion-item.open .accordion-body{max-height:900px}
+.accordion-body-inner{padding:0 16px 16px; font-size:14px; line-height:1.6}
+.accordion-body-inner ul{margin:6px 0; padding-left:18px}
+.badge{
+  display:inline-block; font-size:10.5px; font-weight:700; letter-spacing:.05em;
+  padding:2px 8px; border-radius:5px; margin:2px 6px 2px 0; text-transform:uppercase;
+}
+.badge.heat{background:#fde3d0; color:var(--terracotta)}
+.badge.book{background:#fde3d0; color:var(--terracotta); border:1px solid var(--terracotta)}
+.badge.holiday{background:#e8dcc4; color:#6b5a2a}
+.badge.tip{background:#dfeee9; color:var(--sea)}
+
+/* ---------- voice toggle ---------- */
+.voice-toggle{display:flex; gap:6px; margin-bottom:16px; flex-wrap:wrap}
+.voice-btn{
+  flex:1; min-width:100px; font-family:var(--font-body); font-weight:600; font-size:13px;
+  padding:9px 8px; border-radius:10px; border:1.5px solid var(--cobalt);
+  background:#fff; color:var(--cobalt); cursor:pointer;
+}
+.voice-btn.active{background:var(--cobalt); color:#fff}
+
+/* ---------- generic card list ---------- */
+.card-list{display:flex; flex-direction:column; gap:12px}
+.card{
+  background:#fff; border:1px solid var(--line); border-radius:var(--radius);
+  padding:15px 16px; box-shadow:var(--shadow);
+}
+.card-top{display:flex; align-items:center; gap:10px; margin-bottom:6px}
+.card-ic{font-size:22px}
+.card-title{font-family:var(--font-display); font-weight:700; font-size:16.5px}
+.card-body{font-size:14px; line-height:1.55; color:#3a362f}
+.card-voice{
+  margin-top:10px; padding:10px 12px; border-radius:10px;
+  background:#F7F1E4; border-left:3px solid var(--sun);
+  font-size:13.5px; line-height:1.55; font-style:italic;
+}
+.card-action{
+  margin-top:10px; font-size:13.5px; font-weight:600; color:var(--sea);
+}
+
+/* SOS specific */
+.sos-row{display:flex; align-items:baseline; justify-content:space-between; gap:10px; margin:4px 0}
+.sos-row a{color:var(--cobalt); font-weight:700; text-decoration:none}
+.sos-row a:active{opacity:.6}
+.sos-label{font-size:13px; color:#6b665c}
+
+/* transport table */
+.rate-table{width:100%; border-collapse:collapse; margin-top:6px; font-size:13.5px}
+.rate-table td{padding:6px 4px; border-bottom:1px dashed var(--line)}
+.rate-table td:last-child{text-align:right; font-weight:700; color:var(--terracotta)}
+
+/* phrases */
+.phrase-it{font-family:var(--font-display); font-weight:700; font-size:16px; color:var(--cobalt)}
+.phrase-phon{font-size:12.5px; color:#6b665c; font-style:italic}
+
+a.maps-link{
+  display:inline-block; margin-top:8px; font-size:13px; font-weight:700;
+  color:#fff; background:var(--sea); padding:6px 12px; border-radius:8px; text-decoration:none;
+}
+
+.app-footer{
+  text-align:center; font-size:11.5px; color:#6b665c; padding:20px 16px 30px;
+}
+
+/* ---------- focus visibility & motion ---------- */
+button:focus-visible, a:focus-visible{outline:2.5px solid var(--terracotta); outline-offset:2px}
+@media (prefers-reduced-motion: reduce){
+  *{animation:none !important; transition:none !important}
+}
+
+@media (min-width:700px){
+  .app-header h1{font-size:44px}
+  .grid-nav{grid-template-columns:repeat(3,1fr)}
+}
